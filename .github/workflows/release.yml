@@ -42,6 +42,10 @@ jobs:
 #          # These secrets will need to be configured for the repository:
 #          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
 #          PASSPHRASE: ${{ secrets.PASSPHRASE }}
+      - name: Free up disk space
+        run: |
+          sudo apt-get clean
+          sudo rm -rf /var/lib/apt/lists/*
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v4
